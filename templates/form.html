@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form action="{{ url_for('predict_datapoint') }}" method="POST" id="predictionForm">
+            <h2>Loan Classification</h2>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" placeholder="Enter age value (int)">
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience:</label>
+                <input type="text" id="experience" name="experience" placeholder="Enter experience value (int)">
+            </div>
+            <div class="form-group">  
+                <label for="income">Income:</label>
+                <input type="text" id="income" name="income" placeholder="Enter income value (int)">
+            </div>
+            <div class="form-group">
+                <label for="family">Family:</label>
+                <input type="text" id="family" name="family" placeholder="Enter family value (float)">
+            </div>
+            <div class="form-group">
+                <label for="ccavg">CCAvg:</label>
+                <input type="text" id="ccavg" name="ccavg" placeholder="Enter ccavg value (float)">
+            </div>
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <input type="text" id="education" name="education" placeholder="Enter education value (int)">
+            </div>    
+            <div class="form-group">
+                <label for="mortgage">Mortgage:</label>
+                <input type="text" id="mortgage" name="mortgage" placeholder="Enter mortgage value (float)">
+            </div> 
+            <div class="form-group">
+                <label for="securitiesacc">Securities Account:</label>
+                <input type="text" id="securitiesacc" name="securitiesacc" placeholder="Enter securities account value (int)">
+            </div> 
+            <div class="form-group">
+                <label for="cdacc">CD Account:</label>
+                <input type="text" id="cdacc" name="cdacc" placeholder="Enter CD account value (int)">
+            </div> 
+            <div class="form-group">
+                <label for="online">Online:</label>
+                <input type="text" id="online" name="online" placeholder="Enter online value (int)">
+            </div> 
+            <div class="form-group">
+                <label for="creditcard">CreditCard:</label>
+                <input type="text" id="creditcard" name="creditcard" placeholder="Enter credit card value (int)">
+            </div>      
+            <div class="form-buttons">
+                <input type="submit" value="Submit">
+                <input type="button" value="Clear" onclick="clearForm()">
+            </div>
+        </form>
+
+        {% if result is not none %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <p>{{ result }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function clearForm() {
+            document.getElementById("predictionForm").reset();
+            document.querySelector(".result").innerHTML = '';
+        }
+    </script>
+</body>
+</html>

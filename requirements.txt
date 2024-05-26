@@ -1,0 +1,10 @@
+zipcodes
+pgeocode
+scikit-plot
+pandas
+numpy
+plotly
+seaborn
+flask
+scikit-learn
+-e .
